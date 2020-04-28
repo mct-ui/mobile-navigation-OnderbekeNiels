@@ -832,6 +832,92 @@ a:focus {
     background-color: #fff;
 }
 
+/*
+    Component: mobile nav
+    ---
+    Dedicated mobile nav component
+*/
+
+.c-mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    /* opacity: 0; */
+    pointer-events: none; /* Pointer events is een property die specifieert of een element al dan niet een target mag zijn van mouse of touch events.*/
+    /*transition: opacity .25s;*/
+    
+
+}
+
+.has-mobile-nav .c-mobile-nav {
+    /*opacity: 1;*/
+    pointer-events: auto; /* pointer-events: auto zorgt er voor dat alle items weer klikbaar worden als de navigatie getoond wordt. */ 
+}
+
+.c-mobile-nav__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.c-mobile-nav__bg {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
+}
+
+.has-mobile-nav .c-mobile-nav__bg {
+    position: absolute;
+    opacity: .5;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #202024;
+}
+
+.c-mobile-nav__body {
+    position: relative;
+    padding: 24px;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+}
+
+.has-mobile-nav .c-mobile-nav__body {
+    transform: translateX(0);
+}
+
+@media (min-width: 768px) {
+    .c-mobile-nav__body {
+        padding: 48px;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Hide the mobile nav on larger viewports even whent it's open on smaller screens */
+    .c-mobile-nav {
+        display: none !important;
+    }
+}
+
+/* page animation for nav */
+
+.c-page{
+    transform: translateX(0);
+    transition: transform .25s ease;
+}
+
+.has-mobile-nav .c-page {
+    transform: translateX(25%);
+}
+
+
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
